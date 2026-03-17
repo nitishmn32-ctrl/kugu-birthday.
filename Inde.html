@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Kugu ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    text-align: center;
+    color: white;
+    background: black;
+}
+
+/* FULL SCREEN IMAGE */
+.page {
+    display: none;
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Show active */
+.active {
+    display: block;
+}
+
+/* Overlay */
+.overlay {
+    background: rgba(0,0,0,0.6);
+    height: 100%;
+    padding-top: 100px;
+}
+
+/* Inputs */
+input {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+}
+
+/* Buttons */
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 20px;
+    background: pink;
+    color: black;
+    margin-top: 10px;
+}
+
+/* Heart Button */
+.heart-btn {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: red;
+    color: white;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    font-size: 14px;
+}
+
+/* Video */
+video {
+    width: 90%;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+/* Popup */
+#popup {
+    display: none;
+    position: fixed;
+    top: 20%;
+    left: 10%;
+    width: 80%;
+    background: pink;
+    color: black;
+    padding: 20px;
+    font-size: 22px;
+    border-radius: 20px;
+}
+
+/* Shiv image */
+.shiv {
+    width: 100%;
+    margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div id="page1" class="page active" style="background-image:url('photo1.jpg')">
+<div class="overlay">
+    <h2>Enter Password 💖</h2>
+    <input type="password" id="pass1">
+    <br>
+    <button onclick="check1()">Unlock</button>
+</div>
+</div>
+
+<!-- PAGE 2 -->
+<div id="page2" class="page" style="background-image:url('photo2.jpg')">
+<div class="overlay">
+    <h2>My Love 💖</h2>
+    <p id="note"></p>
+    <button class="heart-btn" onclick="goStep2()">Unlock 🔓</button>
+</div>
+</div>
+
+<!-- PAGE 3 -->
+<div id="page3" class="page">
+<div class="overlay">
+    <h2>Wish by Your Nikku 😘</h2>
+    <h1><b>Happy Birthday Meri Jaan ❤️🌹</b></h1>
+
+    <video id="vid" controls>
+        <source src="video.mp4" type="video/mp4">
+    </video>
+
+    <br>
+    <button onclick="showPopup()">Touch Me ❤️</button>
+</div>
+</div>
+
+<!-- POPUP -->
+<div id="popup">
+    <p><b>Happy Birthday Kugu❤️<br>
+    Mahadev hamesha khush rakhe tujhe❤️🌹</b></p>
+
+    <img class="shiv" src="https://i.pinimg.com/originals/5f/3d/2a/5f3d2a7d0d3cde0e1e0a0a0a0a0a0a0a.jpg">
+</div>
+
+<script>
+
+// STEP 1 PASSWORD
+function check1() {
+    let p = document.getElementById("pass1").value;
+    if(p === "Kugu") {
+        showPage("page2");
+        startTyping();
+    } else {
+        alert("Not for stranger only for my cute buggu ❤️");
+    }
+}
+
+// STEP 2 BUTTON PASSWORD
+function goStep2() {
+    let p = prompt("Enter Password");
+    if(p === "My Birthday Is Best Birthday") {
+        showPage("page3");
+        document.getElementById("vid").play();
+    } else {
+        alert("Wrong Password 😢");
+    }
+}
+
+// PAGE SWITCH
+function showPage(id) {
+    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+}
+
+// LOVE NOTE
+let msg = "Meri pyari Kugu ❤️\n\nTum meri life ka sabse beautiful part ho 💖\nMain har din tumhare sath rehna chahta hu 😊\nTum meri smile ho, meri jaan ho 😘\n\nI Love You Soo Much Mera Bacha ❤️";
+
+let i = 0;
+function startTyping() {
+    function type() {
+        if (i < msg.length) {
+            document.getElementById("note").innerHTML += msg.charAt(i);
+            i++;
+            setTimeout(type, 40);
+        }
+    }
+    type();
+}
+
+// POPUP
+function showPopup() {
+    document.getElementById("popup").style.display = "block";
+}
+</script>
+
+</body>
+  </html>
