@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Special One ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Arial';
+    color: white;
+    text-align: center;
+    background: url('photo.jpg') no-repeat center center/cover;
+}
+
+/* Dark overlay */
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+}
+
+/* Login box */
+#login {
+    position: relative;
+    top: 40%;
+}
+
+input {
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+}
+
+button {
+    padding: 12px 20px;
+    margin-top: 10px;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
+/* Main content */
+#main {
+    display: none;
+    position: relative;
+    top: 20%;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+/* Cake */
+.cake {
+    font-size: 80px;
+    animation: bounce 1s infinite alternate;
+}
+
+@keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-20px); }
+}
+
+/* Hearts */
+.heart {
+    position: fixed;
+    font-size: 20px;
+    animation: float 5s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity:1;}
+    100% { transform: translateY(-10vh); opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<!-- LOGIN -->
+<div id="login">
+    <h2>💖 Only for My Special One 💖</h2>
+    <input type="password" id="pass" placeholder="Enter Love Password">
+    <br>
+    <button onclick="checkPass()">Unlock 🔓</button>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+    <h1>Happy Birthday Kugu 😘💖</h1>
+    <div class="cake">🎂</div>
+    <p id="text"></p>
+</div>
+
+<!-- MUSIC -->
+<audio id="music" src="https://www.bensound.com/bensound-music/bensound-romantic.mp3"></audio>
+
+<script>
+function checkPass() {
+    let p = document.getElementById("pass").value;
+
+    if(p === "Ardhangini") {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("main").style.display = "block";
+        document.getElementById("music").play();
+        startTyping();
+    } else {
+        alert("Wrong password 😢");
+    }
+}
+
+// Typing message
+let msg = "Meri pyari Kugu 😘💖\n\nTum meri life ki sabse special person ho 💕\n\nMain hamesha tumhe khush dekhna chahta hu 😊\n\nTum meri aadat ho, meri duniya ho ❤️\n\nI Love You So Much 💖";
+
+let i = 0;
+function startTyping() {
+    function type() {
+        if (i < msg.length) {
+            document.getElementById("text").innerHTML += msg.charAt(i);
+            i++;
+            setTimeout(type, 40);
+        }
+    }
+    type();
+}
+
+// Hearts
+setInterval(() => {
+    let heart = document.createElement("div");
+    heart.innerHTML = "💖";
+    heart.className = "heart";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+}, 300);
+</script>
+
+</body>
+</html>
