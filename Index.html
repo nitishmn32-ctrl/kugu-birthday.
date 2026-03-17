@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Special One ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    color: white;
+    text-align: center;
+    background: url('photo.jpg') no-repeat center center/cover;
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+}
+
+/* Login */
+#login {
+    position: relative;
+    top: 40%;
+}
+
+input {
+    padding: 12px;
+    font-size: 16px;
+}
+
+button {
+    padding: 12px 20px;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
+/* Main */
+#main {
+    display: none;
+    position: relative;
+    top: 10%;
+}
+
+/* Video */
+video {
+    width: 80%;
+    border-radius: 15px;
+    margin-top: 20px;
+    box-shadow: 0 0 20px pink;
+}
+
+/* Hearts */
+.heart {
+    position: fixed;
+    font-size: 20px;
+    animation: float 5s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); }
+    100% { transform: translateY(-10vh); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<!-- LOGIN -->
+<div id="login">
+    <h2>💖 Only for My Special One 💖</h2>
+    <input type="password" id="pass" placeholder="Enter Love Password">
+    <br>
+    <button onclick="checkPass()">Unlock 🔓</button>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+    <h1>Happy Birthday Kugu 😘💖</h1>
+
+    <!-- VIDEO -->
+    <video id="myVideo" controls>
+        <source src="video.mp4" type="video/mp4">
+    </video>
+
+    <p id="text"></p>
+</div>
+
+<script>
+function checkPass() {
+    let p = document.getElementById("pass").value;
+
+    if(p === "Ardhangini") {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("main").style.display = "block";
+
+        let video = document.getElementById("myVideo");
+        video.play();
+
+        startTyping();
+    } else {
+        alert("Wrong password 😢");
+    }
+}
+
+// Message
+let msg = "Meri pyari Kugu 😘💖\n\nYe video sirf tumhare liye hai 💕\n\nI Love You So Much ❤️";
+
+let i = 0;
+function startTyping() {
+    function type() {
+        if (i < msg.length) {
+            document.getElementById("text").innerHTML += msg.charAt(i);
+            i++;
+            setTimeout(type, 40);
+        }
+    }
+    type();
+}
+
+// Hearts
+setInterval(() => {
+    let heart = document.createElement("div");
+    heart.innerHTML = "💖";
+    heart.className = "heart";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+}, 300);
+</script>
+
+</body>
+  </html>
